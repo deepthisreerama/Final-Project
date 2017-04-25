@@ -12,7 +12,7 @@ function deleteTodoItem($user_id,$todo_id){
 }
 function addTodoItem($user_id, $todo_text){
  global $db;
- $query = 'insert into todos(user_id,todo_item) values (:userid,:todo_text)';
+ $query = 'insert into user_todo_items(email_id,todo_item) values (:userid,:todo_text)';
   $statement = $db-> prepare($query);
   $statement->bindValue(':userid',$user_id);
   $statement->bindValue(':todo_text',$todo_text);
@@ -20,11 +20,11 @@ function addTodoItem($user_id, $todo_text){
   $statement->closeCursor();
 
 }
-function getTodoItems($user_id){
+function getTodoItems($emailId){
  global $db;
- $query = 'select * from todos where user_id= :userid';
+ $query = 'select * from user_todo_items where email_id= :emailId';
  $statement = $db-> prepare($query);
- $statement->bindValue(':userid',$user_id);
+ $statement->bindValue(':emailId',$emailId);
  $statement->execute();
  $result=$statement->fetchAll();
  $statement->closeCursor();
@@ -60,7 +60,7 @@ return false;
 }
 
 }
-function isUserValid($username,$password){
+function isUserValid($username,$password,$firstname,$lastname){
   global $db;
   $query = 'select * from user_info where email_id = :name and password = :pass';
   $statement = $db->prepare($query);
@@ -71,15 +71,19 @@ function isUserValid($username,$password){
   $statement->closeCursor();
   $count=$statement->rowCount();
   if($count == 1) {
-   setcookie('login',$username);
+   setcookie('firstname',$result[0]['first_name']);
+   setcookie('lastname',$result[0]['last_name']);   
    setcookie('my_id',$result[0]['id']);
    setcookie('islogged',true);
    return true;
  }else{
- unset($_COOKIE['login']);
- setcookie('login',false);
+ unset($_COOKIE['firstname']);
+ unset($_COOKIE['lastname']);
+ setcookie('firstname',false);
+ setcookie('lastname',false);
  setcookie('islogged',false);
- setcookie('id',false);
+ setcookie('my_id',false);
+  setcookie('id',false);
  return false;
  }
  }
@@ -94,15 +98,8 @@ function isUserValid($username,$password){
   $statement->closeCursor();
   $count=$statement->rowCount();
   if($count == 1) {
-   setcookie('login',$username);
-   setcookie('my_id',$result[0]['id']);
-   setcookie('islogged',true);
    return true;
  }else{
- unset($_COOKIE['login']);
- setcookie('login',false);
- setcookie('islogged',false);
- setcookie('id',false);
  return false;
  }
  }

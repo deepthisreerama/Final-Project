@@ -17,7 +17,7 @@ if($checkemail == true) {
 $suc = isUserValid($username,$password);
 if($suc == true)
 {
-$result = getTodoItems($_COOKIE['my_id']);
+$result = getTodoItems($username);
 include("list.php");
 
 }else{
@@ -51,10 +51,11 @@ include("list.php");
 
 }else if($action == 'add')
 {
+ $email = filter_input(INPUT_POST, 'email');
   if(isset($_POST['description']) and $_POST['description']!='' ){
-   addTodoItem($_COOKIE['my_id'],$_POST['description']);
+   addTodoItem($email,$_POST['description']);
   }
-  $result = getTodoItems($_COOKIE['my_id']);
+  $result = getTodoItems($email);
   include('list.php');
 }else if($action == 'delete'){
  if(isset($_POST['item_id'])){
