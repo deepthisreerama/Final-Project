@@ -8,11 +8,22 @@ echo "</br></br>";
 <html>
  <body>
    <table>
+        <tr>
+                <th>To-do Item</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th class="right">Time</th>
+                <th>&nbsp;</th>
+        </tr>
      <tr>
        <?php foreach($result as $res):?>
        
         <tr>
-	<td><a href='detail.php'><?php echo $res['todo_item']; ?></a> </td>  
+                <td><?php echo $res['itemname']; ?></td>
+                <td><?php echo $res['description']; ?></td>
+                <td><?php echo $res['date']; ?></td>
+                <td class="right"><?php echo $res['time']; ?></td>
+
    <td>
 <form action='index.php' method='post'>
 <input type='hidden' name='item_id' value='<?php echo $res['id'] ?>'/>
@@ -25,8 +36,8 @@ echo "</br></br>";
      </tr>
    </table>
    <form method='post' action='index.php'>
-      <input type='hidden' name= 'action' value='add'/></br>
-      <input type="submit" value="Add"/></br>
+      <input type='hidden' name= 'action' value='show_add_form'/></br>
+      <input type="submit" value="Add" /></br>
    </form>
  </body>
 </html>

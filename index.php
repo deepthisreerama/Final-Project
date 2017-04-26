@@ -48,15 +48,17 @@ include("list.php");
     }
 
   }
-
+}else if($action == 'show_add_form') {
+  include('add_item.php');
 }else if($action == 'add')
 {
- $email = filter_input(INPUT_POST, 'email');
-  if(isset($_POST['description']) and $_POST['description']!='' ){
-   addTodoItem($email,$_POST['description']);
-  }
-  $result = getTodoItems($email);
-  include('list.php');
+   $email = $_COOKIE['userid'];
+   $itemname = filter_input(INPUT_POST, 'itemname');
+   $description = filter_input(INPUT_POST, 'description');
+   $date = filter_input(INPUT_POST, 'date');
+   $time = filter_input(INPUT_POST, 'time');
+   addTodoItem($email,$itemname, $description, $date,$time);
+   include('list.php');
 }else if($action == 'delete'){
  if(isset($_POST['item_id'])){
  $selected = $_POST['item_id'];

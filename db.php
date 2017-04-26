@@ -10,16 +10,20 @@ function deleteTodoItem($user_id,$todo_id){
        $statement->closeCursor();
 
 }
-function addTodoItem($user_id, $todo_text){
+function addTodoItem($email, $itemname,$description,$date,$time){
  global $db;
- $query = 'insert into user_todo_items(email_id,todo_item) values (:userid,:todo_text)';
+ $query = 'insert into user_todo_items(email_id,itemname,description,date,time) values (:email,:name,:desc,:date,:time)';
   $statement = $db-> prepare($query);
-  $statement->bindValue(':userid',$user_id);
-  $statement->bindValue(':todo_text',$todo_text);
+  $statement->bindValue(':email',$email);
+  $statement->bindValue(':name',$itemname);
+  $statement->bindValue(':desc',$description);
+  $statement->bindValue(':date',$date);
+  $statement->bindValue(':time',$time);
   $statement->execute();
   $statement->closeCursor();
 
 }
+
 function getTodoItems($emailId){
  global $db;
  $query = 'select * from user_todo_items where email_id= :emailId';
@@ -73,12 +77,14 @@ function isUserValid($username,$password,$firstname,$lastname){
   if($count == 1) {
    setcookie('firstname',$result[0]['first_name']);
    setcookie('lastname',$result[0]['last_name']);   
+   setcookie('userid',$result[0]['email_id']);
    setcookie('my_id',$result[0]['id']);
    setcookie('islogged',true);
    return true;
  }else{
  unset($_COOKIE['firstname']);
  unset($_COOKIE['lastname']);
+  unset($_COOKIE['userid']);
  setcookie('firstname',false);
  setcookie('lastname',false);
  setcookie('islogged',false);
