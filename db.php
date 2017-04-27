@@ -1,10 +1,10 @@
 <?php
-function deleteTodoItem($user_id,$todo_id){
+function deleteTodoItem($emailId,$todo_id){
   global $db;
-  $query= 'delete from todos where id=:todo_id and user_id=:user_id';
+  $query= 'delete from user_todo_items where id=:todo_id and email_id=:email';
 
    $statement = $db-> prepare($query);
-     $statement->bindValue(':user_id',$user_id);
+     $statement->bindValue(':email',$emailId);
        $statement->bindValue(':todo_id',$todo_id);
        $statement->execute();
        $statement->closeCursor();
@@ -24,6 +24,19 @@ function addTodoItem($email, $itemname,$description,$date,$time){
 
 }
 
+function editTodoItem($email, $itemname,$description,$date,$time,$id) {
+global $db;
+ $query = 'update user_todo_items set itemname=:name,description=:desc,date=:date,time=:time where email_id=:email and id=:id';
+  $statement = $db-> prepare($query);
+  $statement->bindValue(':email',$email);
+  $statement->bindValue(':name',$itemname);
+  $statement->bindValue(':desc',$description);
+  $statement->bindValue(':date',$date);
+  $statement->bindValue(':time',$time);
+  $statement->bindValue(':id',$id);
+  $statement->execute();
+  $statement->closeCursor();
+}
 function getTodoItems($emailId){
  global $db;
  $query = 'select * from user_todo_items where email_id= :emailId';
