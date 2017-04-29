@@ -43,15 +43,6 @@ if ($action == "show_login_page") {
     }
 } else if ($action == 'show_add_form') {
     include('add_item.php');
-} else if($action == 'add') {
-   $email = $_COOKIE['userid'];
-   $itemname = filter_input(INPUT_POST, 'itemname');
-   $description = filter_input(INPUT_POST, 'description');
-   $date = filter_input(INPUT_POST, 'date');
-   $time = filter_input(INPUT_POST, 'time');
-   addTodoItem($email,$itemname, $description, $date,$time);
-   $result = getTodoItems($email);
-   include('list.php');
 } else if ($action == 'edit') {
     $email = $_COOKIE['userid'];
     $itemname = filter_input(INPUT_POST, 'itemname');
@@ -74,5 +65,17 @@ if ($action == "show_login_page") {
 } else if ($action == 'show_edit_form') {
     $editId = filter_input(INPUT_POST, 'edit_id');
     include('edit_item.php');
+}else if ($action == 'redirect') {
+    $email = $_COOKIE['userid'];
+    $result = getTodoItems($_COOKIE['userid']);
+    include('list.php');
+} else if ($action == 'mark_complete') {
+    $email = $_COOKIE['userid'];
+    $selected = $_POST['mark'];
+    if(isset($selected)){
+       updateTodoItem($email,$selected);
+    }
+    $result = getTodoItems($_COOKIE['userid']);
+    include('list.php');
 }
 ?>

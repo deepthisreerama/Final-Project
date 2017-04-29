@@ -1,8 +1,9 @@
+
 <main>
     <h1>Add an Item</h1>
-    <form action="index.php" method="post" id="add_item_form">
+    <form action="redirect.php" method="post" id="add_item_form">
         <input type="hidden" name="action" value="add">
-
+         
         <label>Item name:</label>
         <input type="text" name="itemname" />
         <br>

@@ -12,13 +12,14 @@ function deleteTodoItem($emailId,$todo_id){
 }
 function addTodoItem($email, $itemname,$description,$date,$time){
  global $db;
- $query = 'insert into user_todo_items(email_id,itemname,description,date,time) values (:email,:name,:desc,:date,:time)';
+ $query = 'insert into user_todo_items(email_id,itemname,description,date,time,complete) values (:email,:name,:desc,:date,:time,:complete)';
   $statement = $db-> prepare($query);
   $statement->bindValue(':email',$email);
   $statement->bindValue(':name',$itemname);
   $statement->bindValue(':desc',$description);
   $statement->bindValue(':date',$date);
   $statement->bindValue(':time',$time);
+  $statement->bindValue(':complete',0);
   $statement->execute();
   $statement->closeCursor();
 
@@ -37,6 +38,18 @@ global $db;
   $statement->execute();
   $statement->closeCursor();
 }
+
+function updateTodoItem($email, $id) {
+global $db;
+ $query = 'update user_todo_items set complete=:complete where email_id=:email and id=:id';
+  $statement = $db-> prepare($query);
+  $statement->bindValue(':email',$email);
+  $statement->bindValue(':id',$id);
+  $statement->bindValue(':complete',1);
+  $statement->execute();
+  $statement->closeCursor();
+}
+
 function getTodoItems($emailId){
  global $db;
  $query = 'select * from user_todo_items where email_id= :emailId';

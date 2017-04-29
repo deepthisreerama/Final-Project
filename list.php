@@ -37,6 +37,13 @@ echo "</br></br>";
 <input type='submit' value='Edit'/>
 </form>
    </td>
+   <td>
+<form action='index.php' method='post'>
+<input type='hidden' name='mark' value='<?php echo $res['id']; ?>'/>
+<input type='hidden' name='action' value='mark_complete'/>
+<input type='submit' value='Mark Complete'/>
+</form>
+   </td>
    </tr>
        <?php endforeach;?>
      </tr>
