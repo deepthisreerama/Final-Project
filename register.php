@@ -1,11 +1,12 @@
 <html>
 <head>
+<link rel="stylesheet" href="style.css">
 <style>
 input[type="radio"]{
     -webkit-appearance: radio;
 }
+
 </style>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
  <div id="clouds" >
@@ -16,16 +17,16 @@ input[type="radio"]{
 	<div class="cloud x4"></div>
 	<div class="cloud x5"></div>
 </div>
-<div class="container" style="height:610px;">
+<div class="container" style="height:680px;">
 <div id="register">
- <h1 style="padding-bottom: 30px;color: #ea4c88;">Sign Up</h1>
+ <h1 style="padding-bottom: 30px;padding-top:60px;color: #ea4c88;">Sign Up</h1>
  <form method = 'post' action = 'index.php'>
-  <label class="reg-label"> First Name: </label><input type="text" name="firstname" value="" required/> </br> <br>
- <label class="reg-label"> Last Name: </label><input type="text" name="lastname" value="" required/> </br> <br>
-  <label class="reg-label">  Email: </label><input type="text" name="email" value="" required/> </br> <br>
- <label class="reg-label"> Password: </label><input type="password" name="password" value="" required/> </br><br>
- <label class="reg-label">  Phone: </label><input type="text" name="phone_num" value="" required/> </br> <br>
-  <label class="reg-label">  Birthday: </label><input type="date" name="birthday" value="" required/> </br> <br>
+  <label class="reg-label"> First Name: </label><input class="text-field" type="text" name="firstname" value="" required/> </br> <br>
+ <label class="reg-label"> Last Name: </label><input class="text-field" type="text" name="lastname" value="" required/> </br> <br>
+  <label class="reg-label">  Email: </label><input class="text-field" type="text" name="email" value="" required/> </br> <br>
+ <label class="reg-label"> Password: </label><input class="text-field" type="password" name="password" value="" required/> </br><br>
+ <label class="reg-label">  Phone: </label><input class="text-field" type="text" name="phone_num" value="" required/> </br> <br>
+  <label class="reg-label">  Birthday: </label><input class="text-field" type="date" name="birthday" value="" required/> </br> <br>
   <label class="reg-label">  Gender: </label>
                             <input type="radio" name="gender" value="female">Female
                             <input type="radio" name="gender" value="male">Male
