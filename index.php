@@ -2,7 +2,7 @@
 
 require('db_connect.php');
 require('db.php');
-require('header.php');
+
 $action = filter_input(INPUT_POST, "action");
 if ($action == NULL) {
     $action = "show_login_page";

@@ -1,4 +1,5 @@
 <?php
+require('header.php');
 $array_complete = array();
 $array_todo = array();
 foreach ($result as $res) {
@@ -9,12 +10,23 @@ foreach ($result as $res) {
         $array_todo[] = $res;
     }
 }
+$firstname_cookie = getcookie('firstname');
+$lastname_cookie = getcookie('lastname');
+if($firstname_cookie=="" || $lastname_cookie==""){
+$firstname_cookie = $_COOKIE['firstname'];
+$lastname_cookie = $_COOKIE['lastname'];
+}
 echo "<h1 style='text-align:center;'> To do list system </h1>";
+
 ?>
 
 <html>
 <head>
  <style>
+  body{
+  background-image: url('images/image1.jpg');
+  font-family:calibri;
+  }
  .button-style{
  border-radius: 3px;
   -moz-border-radius: 3px;
@@ -50,8 +62,8 @@ th {
 }
   </style>
 </head>
-    <body style="background: #afbdd4; font-family:Calibri;">
-    <h4> <?php echo "Welcome, " . $_COOKIE['firstname'] . " " . $_COOKIE['lastname'] . '</br>'; ?> </h4>
+    <body>
+    <h4 style='text-align:center;padding-right:80px;'> <?php echo "Welcome, " . $firstname_cookie . " " . $lastname_cookie . '</br>'; ?> </h4>
         <table class="table-style">
             <?php if (count($array_complete) > 0): ?>
                 <h3 style="margin-left:100px;">Below are your completed items: </h2>

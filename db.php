@@ -102,7 +102,9 @@ function isUserValid($username,$password,$firstname,$lastname){
   $count=$statement->rowCount();
   if($count == 1) {
    setcookie('firstname',$result[0]['first_name']);
+  
    setcookie('lastname',$result[0]['last_name']);   
+   
    setcookie('userid',$result[0]['email_id']);
    setcookie('my_id',$result[0]['id']);
    setcookie('islogged',true);
@@ -135,5 +137,18 @@ function isUserValid($username,$password,$firstname,$lastname){
  return false;
  }
  }
+ 
+ function getcookie($name) {
+    $cookies = [];
+    $headers = headers_list();
+    foreach($headers as $header) {
+        if (strpos($header, 'Set-Cookie: ') === 0) {
+            $value = str_replace('&', urlencode('&'), substr($header, 12));
+            parse_str(current(explode(';', $value, 1)), $pair);
+            $cookies = array_merge_recursive($cookies, $pair);
+        }
+    }
+    return $cookies[$name];
+}
  
  ?>
