@@ -1,0 +1,41 @@
+ .header{
+  text-align:center;
+  margin-top:30px;
+  }
+  body{
+  background-image: url('images/image1.jpg');
+  font-family:calibri;
+  }
+  table{
+  margin-left:auto; 
+    margin-right:auto;
+    margin-top:auto;
+    }
+    
+    .btn{
+    background-color: #3b5998;
+     border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: #eee;
+  font-weight: bold;
+  margin-top:1em;
+  margin-bottom: 0.5em;
+  width: auto;
+  margin-left:10px;
+  height:30px;
+    }
+    
+    .inpt{
+    height: 30px;
+    border-radius: 0px 3px 3px 0px;
+    color: black;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0 10px;
+    width: 200px;
+    font-size: 14px;
+    }
+    label{
+    font-weight:bold;
+    }
