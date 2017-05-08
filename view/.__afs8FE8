@@ -1,0 +1,26 @@
+<?php
+require('../model/db_connect.php');
+require('../model/db.php');
+if ($action == 'add') {
+echo "inside add";
+    $email = $_COOKIE['userid'];
+    $itemname = filter_input(INPUT_POST, 'itemname');
+    $description = filter_input(INPUT_POST, 'description');
+    $date = filter_input(INPUT_POST, 'date');
+    $time = filter_input(INPUT_POST, 'time');
+    addTodoItem($email, $itemname, $description, $date, $time);
+     echo '<script type="text/javascript">';
+        echo 'document.getElementById('myForm').submit();';
+        echo '</script>';
+}
+?>
+
+<html>
+    <body>
+        <form id="myForm" action="../controller/index.php" method="post">
+
+            <input type="hidden" name="action" value="redirect">
+
+        </form>
+    </body>
+</html>
