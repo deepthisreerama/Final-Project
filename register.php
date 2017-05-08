@@ -1,3 +1,13 @@
+<?php
+$error = '';
+  if(array_key_exists('phone_num', $_POST))
+  {
+    if(!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{3}$/', $_POST['phone_num']))
+    {
+      $error = 'Invalid Number!';
+    }
+  }
+?>
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
@@ -5,7 +15,9 @@
 input[type="radio"]{
     -webkit-appearance: radio;
 }
-
+.warning{
+color:red;
+}
 </style>
 </head>
 <body>
@@ -25,13 +37,11 @@ input[type="radio"]{
  <label class="reg-label"> Last Name: </label><input class="text-field" type="text" name="lastname" value="" required/> </br> <br>
   <label class="reg-label">  Email: </label><input class="text-field" type="text" name="email" value="" required/> </br> <br>
  <label class="reg-label"> Password: </label><input class="text-field" type="password" name="password" value="" required/> </br><br>
- <label class="reg-label">  Phone: </label><input class="text-field" type="text" name="phone_num" value="" required/> </br> <br>
+ <label class="reg-label">  Phone: </label><input class="text-field" type="text" name="phone_num" value="" required/> <span class="warning"> <?php echo $error; ?></span> </br> <br>
   <label class="reg-label">  Birthday: </label><input class="text-field" type="date" name="birthday" value="" required/> </br> <br>
   <label class="reg-label">  Gender: </label>
                             <input type="radio" name="gender" value="female">Female
                             <input type="radio" name="gender" value="male">Male
-                            <input type="radio" name="gender" value="other">Others
-                            
 
   <input type="hidden" name="action" value="registrar" /></br></br>
   <input id = "submit_style" type="submit" value="Register" />

@@ -11,8 +11,10 @@
 	<div class="cloud x4"></div>
 	<div class="cloud x5"></div>
 </div>
+
 <div class="container">
 <div id="login">
+<h1 class="heading-style" style="width:500px;color:black;"> To-do list web application </h1>
 <h1 class="heading-style"> Sign In</h1>
 <form method ="post" action="index.php">
 <strong class="text-label">Username:</strong><input style="color:#ea4c88 !important;" type="text" name="email" value=""/><br>

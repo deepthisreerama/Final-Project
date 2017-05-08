@@ -13,7 +13,7 @@ require('header.php');
       <table>
       <tr>
        <td> <label>Item name:</label></td>
-        <td><input class="inpt" type="text" name="itemname" /></td>
+        <td><input class="inpt" type="text" name="itemname" value="'.$itemname.'"/></td>
         
       </tr>
       <tr><td>  <label>Description:</label></td>

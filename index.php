@@ -22,11 +22,20 @@ if ($action == "show_login_page") {
             header("Location: badInfo.php");
         }
     } else {
-        echo "Email doesnt exist.";
+        echo '<script language="javascript">';
+    echo 'alert("Please enter a valid Email Address")';
+    echo '</script>';
+   include('login.php');
     }
 } else if ($action == 'registrar') {
     $email = filter_input(INPUT_POST, 'email');
-    if (isset($email)) {
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+    echo '<script language="javascript">';
+    echo 'alert("Please enter a valid Email Address")';
+    echo '</script>';
+   include('register.php');
+    }else if (isset($email)) {
         $firstname = filter_input(INPUT_POST, 'firstname');
         $lastname = filter_input(INPUT_POST, 'lastname');
         $pass = filter_input(INPUT_POST, 'password');
