@@ -6,8 +6,7 @@ if (array_key_exists('phone_num', $_POST)) {
     }
 }
 if ( isset($_GET['emailerror']) && $_GET['emailerror'] == 1 )
-{
-    
+{  
      $emailerror = "Email already exists, please provide another email!";
 }
 ?>
@@ -52,7 +51,6 @@ if ( isset($_GET['emailerror']) && $_GET['emailerror'] == 1 )
                 </form>
                 <form action="../login.php" method = "post">
                     <input id = "submit_style" type='submit' value='Login'/>
-
                 </form>
             </div>
         </div>
