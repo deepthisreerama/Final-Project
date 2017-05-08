@@ -2,7 +2,7 @@
 if ( isset($_GET['success']) && $_GET['success'] == 1 )
 {
     
-     $success = "User Added Successfully!!";
+     $message = "User Added Successfully!!";
 }
 if ( isset($_GET['error']) && $_GET['error'] == 1 )
 {
@@ -12,7 +12,7 @@ if ( isset($_GET['error']) && $_GET['error'] == 1 )
 if ( isset($_GET['error2']) && $_GET['error2'] == 1 )
 {
      
-     $error2 = " Wrong password, please try again using the same e-mail address!!";
+     $error = " Wrong password, please try again using the same e-mail address!!";
 }
 ?>
 <html>
@@ -31,10 +31,10 @@ if ( isset($_GET['error2']) && $_GET['error2'] == 1 )
 
         <div class="container">
             <div id="login">
-                <h3 class="heading-style" style="width:500px;color:blue;"> <?php echo $success;?> </h3>
-                 <h3 class="heading-style" style="width:500px;color:red;"> <?php echo $error;?> </h3>
-                 <h3 class="heading-style" style="width:500px;color:red;"> <?php echo $error2;?> </h3>
+                
                 <h1 class="heading-style" style="width:500px;color:black;"> To-do list web application </h1>
+                <h3 class="heading-style" style="width:500px;color:blue;"> <?php echo $success;?> </h3>
+                <h3 class="heading-style" style="width:500px;color:red;"> <?php echo $error;?> </h3>
                 <h1 class="heading-style"> Sign In</h1>
                 <form method ="post" action="controller/index.php">
                     <strong class="text-label">Username:</strong><input style="color:#ea4c88 !important;" type="text" name="email" value=""/><br>
